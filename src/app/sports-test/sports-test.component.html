@@ -1,0 +1,21 @@
+<div class="row">
+        <div class="col-sm-12">
+            <div class="center">
+                <button mat-raised-button (click)="openDialog('addSportsTest')">
+                CREATE NEW TEST</button>
+            </div>  
+        </div>
+</div>
+<table class="table table-borderless" align="center" style="width:60%" *ngIf="sports">
+    <tr>
+        <th class="center">Date</th>
+        <th class="center">Number of participants</th>
+        <th class="center">Test Type</th>
+    </tr>
+    <tr *ngFor="let sport of sports.data" >
+        <td class="center">{{sport.test_date}}</td>
+        <td class="center">{{sport.number_of_participants}}</td>
+        <td class="center"><a href="/sportsDetail/{{sport.id}}">{{sport.test_type_name}}</a></td>
+    </tr>
+</table>
+

@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+.center{
+    text-align: center;
+}
+.heading{
+    font-size: 25px;
+    font-weight: bold;
+    font-family: serif;
+    text-transform: uppercase;
+}
+.button{
+    margin: 10px;
+}

@@ -1,0 +1,41 @@
+<div class="row" *ngIf="sportsdetail">
+    <div class="col-sm-12">
+        <div class="center heading">
+            {{sportsdetail.data.TestTypeName}} D. {{sportsdetail.data.TestDate}}
+        </div>  
+    </div>
+</div>
+<table class="table table-borderless" align="center" style="width:60%" *ngIf="sportsdetail">
+    <tr>
+        <th class="center">Ranking</th>
+        <th class="center">Distance (meter)</th>
+        <th class="center">Fitness Rating</th>
+    </tr>
+    <tr *ngFor="let sport of sportsdetail.data.sportsDetail">
+        <td class="center"><a (click)="openDialog('editAthlete',sport.detail.athlete_id)">{{sport.detail.user.name}}</a></td>
+        <td class="center">{{sport.detail.distance}}</td>
+        <td class="center">{{sport.rating}}</td>
+    </tr>
+</table>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="center">
+            (Click on player to change data)
+        </div>  
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="center">
+            <button class = "btn btn-primary btn-lg button" (click)="openDialog('addAthlete')">
+                ADD NEW ATHLETE TO TEST</button>
+        </div>  
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="center">
+            <button class = "btn btn-primary btn-lg button">DELETE TEST</button>
+        </div>  
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div *ngIf="DialogType == 'addSportsTest'">
+    <h4 mat-dialog-title>CREATE NEW TEST</h4>
+    <div>
+        <app-sports-test-form></app-sports-test-form>
+    </div>
+</div>
+<div *ngIf="DialogType == 'addAthlete'">
+    <h4 mat-dialog-title>ADD NEW ATHLETE TO TEST</h4>
+    <div>
+        <app-athlete-add-form [TestId]="TestId" [DialogType]="'addAthlete'"></app-athlete-add-form>
+    </div>
+</div>
+<div *ngIf="DialogType == 'editAthlete'">
+    <h4 mat-dialog-title>CHANGE DATA FOR ATHLETE</h4>
+    <div>
+        <app-athlete-add-form [AthleteId]="AthleteId" [DialogType]="'editAthlete'"></app-athlete-add-form>
+    </div>
+</div>
+<div *ngIf="DialogType == 'deleteAthlete'">
+    <h4 mat-dialog-title>CONFIRM</h4>
+    <div>
+        <app-athlete-add-form [AthleteId]="AthleteId" [DialogType]="'deleteAthlete'"></app-athlete-add-form>
+    </div>
+</div>
+
