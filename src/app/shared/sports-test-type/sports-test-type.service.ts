@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {Observable} from 'rxjs/Rx';
 import { SportsTestType } from './sports-test-type';
+import { EnvironmentService } from '../environment/environment.service';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SportsTestTypeService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,
+        private environmentService: EnvironmentService,
+        private authService: AuthenticationService
+        ) { }
   
-    baseUrl = 'http://localhost:8000/api';
-
     getSportsTestType(): Observable<SportsTestType> {
-        return this.http.get<SportsTestType>(this.baseUrl+'/sportsTestType', {responseType: 'json'});
+        let headers = new HttpHeaders();
+        headers = this.authService.createHeader();
+        
+        let url = this.environmentService.setApiService('sportsTestType')
+        return this.http.get<SportsTestType>(url, {headers});
     }
 }

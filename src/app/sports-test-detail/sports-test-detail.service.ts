@@ -14,10 +14,11 @@ export class SportsTestDetailService {
     private environmentService: EnvironmentService,
     private authService: AuthenticationService) { }
   
-  baseUrl = 'http://localhost:8000/api';
-  
     getSportsDetail(id:number): Observable<SportsTestDetail> {
-        return this.http.get<SportsTestDetail>(this.baseUrl+'/sportsDetail/'+id, {responseType: 'json'});
+        let headers = new HttpHeaders();
+        headers = this.authService.createHeader();
+        let url = this.environmentService.setApiService('sportsDetail')+'/'+id;
+        return this.http.get<SportsTestDetail>(url, {headers});
     }
     
 }

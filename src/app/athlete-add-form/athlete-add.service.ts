@@ -16,49 +16,41 @@ export class AthleteAddService {
     private environmentService: EnvironmentService,
     private authService: AuthenticationService) { }
   
-    baseUrl = 'http://localhost:8000/api';
-  
    addAthlete(athleteadd: AthleteAdd): Observable<HttpResponse<AthleteAdd>>{
-        console.log("add athlete ");
-        let httpHeaders = new HttpHeaders({
-             'Content-Type' : 'application/json'
-        });    
-        console.log(athleteadd);
-        return this.http.post<AthleteAdd>(this.baseUrl+'/addAthlete', athleteadd,
+        let headers = new HttpHeaders();
+        headers = this.authService.createHeader();
+        let url = this.environmentService.setApiService('addAthlete');
+        return this.http.post<AthleteAdd>(url, athleteadd,
             {
-              headers: httpHeaders,
+              headers: headers,
               observe: 'response'
             }
         ); 
     }
     
     editAthleteById(athleteadd: AthleteAdd,id:number): Observable<HttpResponse<AthleteAdd>>{
-        console.log("edit athlete ");
-        let httpHeaders = new HttpHeaders({
-             'Content-Type' : 'application/json'
-        });    
-        console.log(athleteadd);
-        return this.http.post<AthleteAdd>(this.baseUrl+'/editAthleteById/'+id, athleteadd,
+        let headers = new HttpHeaders();
+        headers = this.authService.createHeader();
+        let url = this.environmentService.setApiService('editAthleteById')+'/'+id;
+        return this.http.post<AthleteAdd>(url, athleteadd,
             {
-              headers: httpHeaders,
+              headers: headers,
               observe: 'response'
             }
         ); 
     }
     
-    deleteAthleteById(id:number): Observable<{}>{
-        console.log("delete athlete ");
-        const httpOptions = {
-            headers: new HttpHeaders({
-              'Content-Type':  'application/json'
-            })
-          };
-
-        return this.http.delete(this.baseUrl+'/deleteAthleteById/'+id, httpOptions);
-        
+    deleteAthleteById(id:number): Observable<{}> {
+        let headers = new HttpHeaders();
+        headers = this.authService.createHeader();
+        let url = this.environmentService.setApiService('deleteAthleteById')+'/'+id;
+        return this.http.delete(url, {headers});
     }
 
     getAthleteById(id:number): Observable<AthleteAdd> {
-        return this.http.get<AthleteAdd>(this.baseUrl+'/getAthleteById/'+id, {responseType: 'json'});
+        let headers = new HttpHeaders();
+        headers = this.authService.createHeader();
+        let url = this.environmentService.setApiService('getAthleteById')+'/'+id;
+        return this.http.get<AthleteAdd>(url, {headers});
     }
 }
