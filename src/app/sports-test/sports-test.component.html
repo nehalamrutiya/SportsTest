@@ -1,7 +1,9 @@
+<app-nav-header></app-nav-header>
+<br><br><br>
 <div class="row">
         <div class="col-sm-12">
-            <div class="center">
-                <button mat-raised-button (click)="openDialog('addSportsTest')">
+            <div class="center" *ngIf = "this.coach">
+                <button class="btn btn-primary btn-lg button" (click)="openDialog('addSportsTest')">
                 CREATE NEW TEST</button>
             </div>  
         </div>

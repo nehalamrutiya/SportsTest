@@ -16,19 +16,30 @@ export class DialogBoxComponent implements OnInit {
     DialogType : string;
     TestId : number;
     AthleteId : number;
+    DialogTitle: string;
     
   constructor(public dialogRef: MatDialogRef<DialogBoxComponent>,
         @Inject(MAT_DIALOG_DATA) data) {
         
         if(data.Type == 'addAthlete') {
+            this.DialogTitle = 'ADD NEW ATHLETE TO TEST';
             this.DialogType = data.Type;
             this.TestId = data.TestId;
         }else if(data.Type == 'editAthlete') {
+            this.DialogTitle = 'CHANGE DATA FOR ATHLETE';
             this.DialogType = data.Type;
             this.AthleteId = data.AthleteId;
         }else if(data.Type == 'deleteAthlete'){
+            this.DialogTitle = 'CONFIRM';
             this.DialogType = data.Type;
             this.AthleteId = data.AthleteId;
+        }else if(data.Type == 'deleteSportsTest') {
+            this.DialogTitle = 'CONFIRM';
+            this.DialogType = data.Type;
+            this.TestId = data.TestId;
+        }else if(data.Type == 'addSportsTest') {
+            this.DialogTitle = 'CREATE NEW TEST';
+            this.DialogType = data.Type;
         }
    }
 

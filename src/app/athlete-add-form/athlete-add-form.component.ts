@@ -1,22 +1,27 @@
 import { Component, OnInit,Input, Output } from '@angular/core';
 import {MatDialog, MatDialogRef, MatDialogConfig, MAT_DIALOG_DATA} from '@angular/material';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
-import { AthleteAddService } from '../athlete-add.service';
-import { UserService } from '../user.service';
-import { AthleteAdd } from '../athlete-add';
-import { User } from '../user';
+import { AthleteAddService } from './athlete-add.service';
+import { SportsTestService } from '../sports-test/sports-test.service';
+import { UserService } from '../shared/user/user.service';
+import { AthleteAdd } from './athlete-add';
+import { User } from '../shared/user/user';
+import { TokenStorage } from '../shared/authentication/token-storage.service';
+import { EnvironmentService } from "../shared/environment/environment.service";
+import { AuthenticationService } from '../shared/authentication/authentication.service';
 
 @Component({
   selector: 'app-athlete-add-form',
   templateUrl: './athlete-add-form.component.html',
   styleUrls: ['./athlete-add-form.component.css'],
-  providers:[AthleteAddService]
+  providers:[UserService,SportsTestService,AthleteAddService,TokenStorage,EnvironmentService,AuthenticationService]
 })
 export class AthleteAddFormComponent implements OnInit {
 
     users : User;
     response;
     submitted = false; 
+    deleted = false;
     @Input('TestId') TestId: number;
     @Input('AthleteId') AthleteId: number;
     @Input('DialogType') DialogType: string;
@@ -24,7 +29,11 @@ export class AthleteAddFormComponent implements OnInit {
 
     constructor( private AthleteAddService: AthleteAddService,
                  private UserService: UserService,
-                 public dialog: MatDialog
+                 private SportsTestService: SportsTestService,
+                 public dialog: MatDialog,
+                 public EnvService : EnvironmentService,
+                 public AuthService: AuthenticationService,
+                 public dialogRef: MatDialogRef<DialogBoxComponent>
                ) { }
 
    
@@ -42,6 +51,8 @@ export class AthleteAddFormComponent implements OnInit {
             this.AthleteAddService.addAthlete(this.model).subscribe(res => { 
                 this.response = res.body;
                 this.submitted = true; 
+                this.dialogRef.close();
+                window.location.reload();
               },
               err => {
                 console.log(err);
@@ -51,6 +62,8 @@ export class AthleteAddFormComponent implements OnInit {
             this.AthleteAddService.editAthleteById(this.model,this.AthleteId).subscribe(res => { 
                 this.response = res.body;
                 this.submitted = true; 
+                this.dialogRef.close();
+                window.location.reload();
               },
               err => {
                 console.log(err);
@@ -60,14 +73,27 @@ export class AthleteAddFormComponent implements OnInit {
     }
 
     onDeleteSubmit(){
-        this.AthleteAddService.editAthleteById(this.model,this.AthleteId).subscribe(res => { 
-                this.response = res.body;
-                this.submitted = true; 
+        if(this.DialogType == "deleteAthlete"){
+            this.AthleteAddService.deleteAthleteById(this.AthleteId).subscribe(res => { 
+                this.deleted = true;
+                this.dialogRef.close();
+                window.location.reload(); 
               },
               err => {
                 console.log(err);
               }
-        );
+            );
+        }else if(this.DialogType == "deleteSportsTest"){
+            this.SportsTestService.deleteSportsTest(this.TestId).subscribe(res => { 
+                this.deleted = true;
+                this.dialogRef.close();
+                window.location.reload();
+              },
+              err => {
+                console.log(err);
+              }
+            );
+        }
     }
     
     getUsers(): void {
@@ -80,16 +106,14 @@ export class AthleteAddFormComponent implements OnInit {
     }
     
     getAthleteById(id:number): void {
-        this.AthleteAddService.getAthleteById(id).subscribe(
-        data => { 
-                this.model = data.data;
-            }
-        );
-    }
+            this.AthleteAddService.getAthleteById(id).subscribe(
+                (data:any) => { 
+                    this.model = data.data;
+                }
+            );
+        }
     
     openDialog(Type:string): void {
-       console.log(Type);
-       console.log(this.AthleteId);
        const dialogConfig = new MatDialogConfig();
        
         dialogConfig.data = {
@@ -103,5 +127,9 @@ export class AthleteAddFormComponent implements OnInit {
         dialogRef.afterClosed().subscribe(result => {
           console.log('The dialog was closed');
         }); 
-  }
+    }
+  
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
 }

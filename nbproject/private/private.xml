@@ -3,43 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/sports/src/app/sports-test/sports-test.component.spec.ts</file>
-            <file>file:/C:/sports/src/app/app-routing.module.ts</file>
-            <file>file:/C:/sports/src/app/athlete-add-form/athlete-add-form.component.html</file>
-            <file>file:/C:/sports/src/app/sports-test/sports-test.component.html</file>
-            <file>file:/C:/sports/src/app/sports-test/sports-test.module.ts</file>
-            <file>file:/C:/sports/src/app/sports-test-form/sports-test-form.component.html</file>
-            <file>file:/C:/sports/src/app/athlete-add-form/athlete-add-form.component.ts</file>
-            <file>file:/C:/sports/src/app/sports-test-detail/sports-test-detail.module.ts</file>
-            <file>file:/C:/sports/src/app/app.component.spec.ts</file>
-            <file>file:/C:/sports/src/app/dialog-box/dialog-box.component.ts</file>
-            <file>file:/C:/sports/src/app/app.component.ts</file>
-            <file>file:/C:/sports/src/app/sports-test.service.spec.ts</file>
-            <file>file:/C:/sports/src/app/material/material.module.ts</file>
-            <file>file:/C:/sports/src/app/athlete-add.service.ts</file>
-            <file>file:/C:/sports/src/app/sports-test-detail.service.ts</file>
-            <file>file:/C:/sports/src/app/app.component.html</file>
-            <file>file:/C:/sports/src/app/sports-test-type.service.ts</file>
-            <file>file:/C:/sports/src/app/sports-test-form/sports-test-form.module.ts</file>
-            <file>file:/C:/sports/src/app/athlete-add-form/athlete-add-form.component.spec.ts</file>
-            <file>file:/C:/sports/src/app/athlete-add-form/athlete-add-form.component.css</file>
-            <file>file:/C:/sports/src/app/dialog-box/dialog-box.module.ts</file>
-            <file>file:/C:/sports/src/styles.css</file>
-            <file>file:/C:/sports/src/app/app.module.ts</file>
+            <file>file:/C:/sports/src/app/sports-test/sports-test.service.spec.ts</file>
             <file>file:/C:/sports/src/app/sports-test-form/sports-test-form.component.ts</file>
-            <file>file:/C:/sports/src/app/sports-test.service.ts</file>
-            <file>file:/C:/sports/src/app/sports-test.ts</file>
+            <file>file:/C:/sports/src/app/athlete-add-form/athlete-add-form.component.ts</file>
+            <file>file:/C:/sports/src/app/sports-test/sports-test.service.ts</file>
+            <file>file:/C:/sports/src/app/login/login.component.ts</file>
             <file>file:/C:/sports/src/app/sports-test/sports-test.component.ts</file>
-            <file>file:/C:/sports/src/app/sports-test-add.ts</file>
-            <file>file:/C:/sports/src/app/sports-test-detail.ts</file>
-            <file>file:/C:/sports/src/app/athlete-add.ts</file>
-            <file>file:/C:/sports/src/app/sports-test-add.spec.ts</file>
-            <file>file:/C:/sports/src/app/sports-test-detail/sports-test-detail.component.html</file>
-            <file>file:/C:/sports/src/app/sports-test-form/sports-test-form.component.spec.ts</file>
-            <file>file:/C:/sports/src/app/sports-test-detail/sports-test-detail.component.ts</file>
-            <file>file:/C:/sports/src/app/sports-test-type.ts</file>
-            <file>file:/C:/sports/src/app/dialog-box/dialog-box.component.html</file>
-            <file>file:/C:/sports/src/index.html</file>
+            <file>file:/C:/sports/src/app/sports-test-type.service.ts</file>
         </group>
     </open-files>
 </project-private>

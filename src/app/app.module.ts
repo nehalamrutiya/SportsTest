@@ -11,6 +11,10 @@ import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { SportsTestFormComponent } from './sports-test-form/sports-test-form.component';
 import { SportsTestDetailComponent } from './sports-test-detail/sports-test-detail.component';
 import { AthleteAddFormComponent } from './athlete-add-form/athlete-add-form.component';
+import { NavHeaderComponent } from './nav-header/nav-header.component';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
+import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import { AthleteAddFormComponent } from './athlete-add-form/athlete-add-form.com
     DialogBoxComponent,
     SportsTestFormComponent,
     SportsTestDetailComponent,
-    AthleteAddFormComponent
+    AthleteAddFormComponent,
+    NavHeaderComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,9 @@ import { AthleteAddFormComponent } from './athlete-add-form/athlete-add-form.com
     FormsModule,
     MaterialModule,
   ],
-  providers: [],
+  providers: [
+    { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+    SnotifyService],
   bootstrap: [AppComponent],
   entryComponents: [DialogBoxComponent],
 })

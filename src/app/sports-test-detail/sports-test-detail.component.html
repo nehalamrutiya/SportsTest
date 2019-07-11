@@ -1,4 +1,7 @@
+<app-nav-header></app-nav-header>
+<br><br><br>
 <div class="row" *ngIf="sportsdetail">
+    <button mat-button (click)="backView()"><b><</b></button>
     <div class="col-sm-12">
         <div class="center heading">
             {{sportsdetail.data.TestTypeName}} D. {{sportsdetail.data.TestDate}}
@@ -12,21 +15,28 @@
         <th class="center">Fitness Rating</th>
     </tr>
     <tr *ngFor="let sport of sportsdetail.data.sportsDetail">
-        <td class="center"><a (click)="openDialog('editAthlete',sport.detail.athlete_id)">{{sport.detail.user.name}}</a></td>
+        <td class="center" *ngIf = "this.coach; else Athlete">
+            <a href="javascript:;" (click)="openDialog('editAthlete',sport.detail.athlete_id)">{{sport.detail.user.name}}</a>
+        </td>
+        <ng-template #Athlete>
+            <td class="center">
+                {{sport.detail.user.name}}
+            </td>
+        </ng-template>
         <td class="center">{{sport.detail.distance}}</td>
         <td class="center">{{sport.rating}}</td>
     </tr>
 </table>
 <div class="row">
     <div class="col-sm-12">
-        <div class="center">
+        <div class="center" *ngIf = "this.coach">
             (Click on player to change data)
         </div>  
     </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <div class="center">
+        <div class="center" *ngIf = "this.coach">
             <button class = "btn btn-primary btn-lg button" (click)="openDialog('addAthlete')">
                 ADD NEW ATHLETE TO TEST</button>
         </div>  
@@ -34,8 +44,8 @@
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <div class="center">
-            <button class = "btn btn-primary btn-lg button">DELETE TEST</button>
+        <div class="center" *ngIf = "this.coach">
+            <button class = "btn btn-primary btn-lg button" (click)="openDialog('deleteSportsTest')">DELETE TEST</button>
         </div>  
     </div>
 </div>

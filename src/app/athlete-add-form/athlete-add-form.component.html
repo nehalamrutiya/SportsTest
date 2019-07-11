@@ -31,7 +31,18 @@
         <button type="submit" class="btn btn-light center">YES</button>
     </div>
     <div class="form-group">
-        <button type="button" class="btn btn-light center">NO</button>
+        <button type="button" class="btn btn-light center" (click)="onNoClick()">NO</button>
+    </div>
+   </form>
+</div>
+<div class="container" *ngIf="DialogType == 'deleteSportsTest'">
+    <form (ngSubmit)="onDeleteSubmit()" #sportsTestForm="ngForm">
+    <div>Do you want to delete this sports test</div>   
+    <div class="form-group">
+        <button type="submit" class="btn btn-light center">YES</button>
+    </div>
+    <div class="form-group">
+        <button type="button" class="btn btn-light center" (click)="onNoClick()">NO</button>
     </div>
    </form>
 </div>

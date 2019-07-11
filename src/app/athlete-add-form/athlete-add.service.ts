@@ -2,14 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient,HttpResponse,HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import { AthleteAdd } from './athlete-add';
-import { User } from './user';
+import { User } from '../shared/user/user';
+import { EnvironmentService } from './../shared/environment/environment.service';
+import { AuthenticationService } from './../shared/authentication/authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AthleteAddService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,
+    private environmentService: EnvironmentService,
+    private authService: AuthenticationService) { }
   
     baseUrl = 'http://localhost:8000/api';
   
